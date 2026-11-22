@@ -1,0 +1,69 @@
+@page
+@model wt_lab8_8razor_postgresql_liseychikov.Pages.Tasks.IndexModel
+@{
+    ViewData["Title"] = "Каталог задач";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Каталог задач проекта</h1>
+        <a asp-page="Create" class="btn btn-primary shadow-sm">Добавить задачу</a>
+    </div>
+
+    <form method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text"
+                   name="Search"
+                   value="@Model.Search"
+                   placeholder="Название задачи"
+                   class="form-control" />
+            <button type="submit" class="btn btn-outline-primary">Найти</button>
+            @if (!string.IsNullOrWhiteSpace(Model.Search))
+            {
+                <a asp-page="./Index" class="btn btn-outline-secondary">Сбросить</a>
+            }
+        </div>
+    </form>
+
+    <div class="row">
+        @foreach (var task in Model.Tasks)
+        {
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card shadow rounded h-100 border-0">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-primary">#@task.Id</span>
+                            <span class="badge bg-secondary">@task.Category</span>
+                        </div>
+                        
+                        <h5 class="card-title fw-bold">@task.Name</h5>
+                        
+                        <p class="card-text text-muted mb-3">
+                            Стоимость: <strong>@task.Price руб.</strong>
+                        </p>
+
+                        <div class="mb-3">
+                            @if (task.IsAvaliable)
+                            {
+                                <span class="badge bg-success">Доступна</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Недоступна</span>
+                            }
+                        </div>
+
+                        <div class="mt-auto d-flex justify-content-between align-items-center pt-2 border-top">
+                            <a asp-page="Details" asp-route-id="@task.Id" class="btn btn-outline-secondary btn-sm">
+                                Подробнее
+                            </a>
+                            <a asp-page="Edit" asp-route-id="@task.Id" class="btn btn-outline-primary btn-sm">
+                                Редактировать
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

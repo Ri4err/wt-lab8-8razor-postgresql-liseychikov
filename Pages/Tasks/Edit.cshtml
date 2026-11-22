@@ -1,0 +1,47 @@
+@page "{id:int}"
+@model wt_lab8_8razor_postgresql_liseychikov.Pages.Tasks.EditModel
+@{
+    ViewData["Title"] = "Редактирование";
+}
+
+<h1>Редактирование задачи</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Task.Id" />
+
+            <div class="mb-3">
+                <label asp-for="Task.Name" class="form-label"></label>
+                <input asp-for="Task.Name" class="form-control" />
+                <span asp-validation-for="Task.Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Task.Category" class="form-label"></label>
+                <input asp-for="Task.Category" class="form-control" />
+                <span asp-validation-for="Task.Category" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Task.Price" class="form-label"></label>
+                <input asp-for="Task.Price" class="form-control" />
+                <span asp-validation-for="Task.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" asp-for="Task.IsAvaliable" />
+                <label class="form-check-label" asp-for="Task.IsAvaliable"></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
