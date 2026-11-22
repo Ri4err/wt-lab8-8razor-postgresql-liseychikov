@@ -3,14 +3,22 @@ using wt_lab8_8razor_postgresql_liseychikov.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString=builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<AppDbContext>(options=>
-options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider
+        .GetRequiredService<AppDbContext>();
+
+    db.Database.Migrate();
+}
 
 if (!app.Environment.IsDevelopment())
 {
