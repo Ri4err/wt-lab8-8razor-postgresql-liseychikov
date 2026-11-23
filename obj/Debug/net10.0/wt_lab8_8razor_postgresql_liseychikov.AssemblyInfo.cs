@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("wt_lab8_8razor_postgresql_liseychikov")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+095a323b5ed192ee6db5a0337740274603e78a80")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2eaf2c6f59c2cbd412a8d39af42ac863a588ce6f")]
 [assembly: System.Reflection.AssemblyProductAttribute("wt_lab8_8razor_postgresql_liseychikov")]
 [assembly: System.Reflection.AssemblyTitleAttribute("wt_lab8_8razor_postgresql_liseychikov")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
